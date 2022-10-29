@@ -10,7 +10,6 @@ node {
      myTestContainer.pull()
      myTestContainer.inside {
        sh 'npm install --only=dev'
-       sh 'npm audit fix --force'
        sh 'npm test'
      }
    }
@@ -20,7 +19,6 @@ node {
      myTestContainer.pull()
      myTestContainer.inside("--link ${mysql.id}:mysql") { // using linking, mysql will be available at host: mysql, port: 3306
           sh 'npm install --only=dev'
-          sh 'npm audit fix --force'
           sh 'npm test'                     
      }                                   
      mysql.stop()
